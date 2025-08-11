@@ -92,14 +92,5 @@ public partial class Order
     public decimal? OrderTotalAmount { get; set; }
 
     public bool? Imported { get; set; }
-    public int ContactId { get; internal set; }
-    public int EmployeeId { get; internal set; }
-    public decimal? Freight { get; internal set; }
-    public DateTime? HstryDateTime { get; internal set; }
-    public string? HstryUserId { get; internal set; }
-    public DateTime? OrderDate { get; internal set; }
-    public decimal? OrderTotal { get; internal set; }
-    public DateTime? RequiredDate { get; internal set; }
-    public int? ShipToId { get; internal set; }
-    public DateTime? ShippedDate { get; internal set; }
+ 
 }

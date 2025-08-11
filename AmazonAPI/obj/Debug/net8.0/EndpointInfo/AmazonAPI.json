@@ -202,6 +202,18 @@
         }
       }
     },
+    "/api/Auth/Userslist": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/login": {
       "post": {
         "tags": [
@@ -284,6 +296,18 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/ManageOrders/orders": {
+      "get": {
+        "tags": [
+          "ManageOrders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -557,63 +581,6 @@
           "imported": {
             "type": "boolean",
             "nullable": true
-          },
-          "contactId": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "employeeId": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "freight": {
-            "type": "number",
-            "format": "double",
-            "nullable": true,
-            "readOnly": true
-          },
-          "hstryDateTime": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true,
-            "readOnly": true
-          },
-          "hstryUserId": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "orderDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true,
-            "readOnly": true
-          },
-          "orderTotal": {
-            "type": "number",
-            "format": "double",
-            "nullable": true,
-            "readOnly": true
-          },
-          "requiredDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true,
-            "readOnly": true
-          },
-          "shipToId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "readOnly": true
-          },
-          "shippedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true,
-            "readOnly": true
           }
         },
         "additionalProperties": false

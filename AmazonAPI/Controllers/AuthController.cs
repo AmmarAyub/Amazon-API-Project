@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Common;
 
 namespace AmazonAPI.Controllers
 {
@@ -25,6 +26,35 @@ namespace AmazonAPI.Controllers
             _context1 = context;
             _tokenService = tokenService;
             _passwordHasher = passwordHasher;
+        }
+
+        [HttpGet("Userslist")]
+        public async Task<IActionResult> GetUsers()
+        {
+            try
+            {
+                var users = await _context1.AspNetUsers
+                    .Select(user => new
+                    {
+                        UserId = user.Id,
+                        UserName = user.UserName,
+                        Email = user.Email,
+                        FullName = user.FullName,
+                        CompanyName = user.CompanyName,
+                        UserStatus = user.UserStatus
+                    })
+                    .ToListAsync();
+
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    error = "Error retrieving users",
+                    details = ex.Message
+                });
+            }
         }
 
         [HttpPost("login")]

@@ -171,6 +171,26 @@
     ]
   },
   {
+    "ContainingType": "AmazonAPI.Controllers.AuthController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Auth/Userslist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AmazonAPI.Controllers.ManageOrdersController",
+    "Method": "GetOrder",
+    "RelativePath": "api/ManageOrders/orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AmazonAPI.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

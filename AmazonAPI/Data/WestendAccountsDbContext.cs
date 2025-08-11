@@ -1989,20 +1989,20 @@ public partial class WestendAccountsDbContext : DbContext
             entity.HasKey(e => e.OrderId).HasFillFactor(90);
 
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.ContactId).HasColumnName("ContactID");
-            entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
-            entity.Property(e => e.Freight)
-                .HasDefaultValue(0m)
-                .HasColumnType("money");
-            entity.Property(e => e.HstryDateTime).HasColumnType("datetime");
-            entity.Property(e => e.HstryUserId)
-                .HasMaxLength(128)
-                .HasColumnName("HstryUserID");
-            entity.Property(e => e.OrderDate).HasColumnType("datetime");
-            entity.Property(e => e.OrderTotal).HasColumnType("money");
-            entity.Property(e => e.RequiredDate).HasColumnType("datetime");
-            entity.Property(e => e.ShipToId).HasColumnName("ShipToID");
-            entity.Property(e => e.ShippedDate).HasColumnType("datetime");
+            //entity.Property(e => e.ContactId).HasColumnName("ContactID");
+            //entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
+            //entity.Property(e => e.Freight)
+            //    .HasDefaultValue(0m)
+            //    .HasColumnType("money");
+            //entity.Property(e => e.HstryDateTime).HasColumnType("datetime");
+            //entity.Property(e => e.HstryUserId)
+            //    .HasMaxLength(128)
+            //    .HasColumnName("HstryUserID");
+            //entity.Property(e => e.OrderDate).HasColumnType("datetime");
+            //entity.Property(e => e.OrderTotal).HasColumnType("money");
+            //entity.Property(e => e.RequiredDate).HasColumnType("datetime");
+            //entity.Property(e => e.ShipToId).HasColumnName("ShipToID");
+            //entity.Property(e => e.ShippedDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<OrderApi>(entity =>
