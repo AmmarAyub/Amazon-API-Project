@@ -17,6 +17,35 @@
         }
       }
     },
+    "/api/AmazonOrders/AmazonOrdersstats": {
+      "get": {
+        "tags": [
+          "AmazonOrders"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "current"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AmazonDashboardViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/AmazonOrders": {
       "get": {
         "tags": [
@@ -354,6 +383,207 @@
   },
   "components": {
     "schemas": {
+      "AmazonAllPnL": {
+        "type": "object",
+        "properties": {
+          "orderSource": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderId": {
+            "type": "string",
+            "nullable": true
+          },
+          "purchaseDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "latestShipDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "sku": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sellingPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "itemTaxAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "sellingTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "shippingProgram": {
+            "type": "string",
+            "nullable": true
+          },
+          "shipMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "sellingStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "vendorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "purchaseOrdersId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "purchaseTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "taxPaidOnPurchase": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "freight": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "purchaseTotalWithTax": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "marketplaceFee": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "estimatedProfit": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "purchaseOrderStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "vendorShipVia": {
+            "type": "string",
+            "nullable": true
+          },
+          "trackingId": {
+            "type": "string",
+            "nullable": true
+          },
+          "vendorShipDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "trackingStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AmazonDashboardViewModel": {
+        "type": "object",
+        "properties": {
+          "allOrders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AmazonAllPnL"
+            },
+            "nullable": true
+          },
+          "currentMonthOrders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AmazonAllPnL"
+            },
+            "nullable": true
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/DashboardMetrics"
+          },
+          "selectedPeriod": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DashboardMetrics": {
+        "type": "object",
+        "properties": {
+          "orderCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalProfit": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalPurchases": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalFreight": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalSales": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalMarketplaceFee": {
+            "type": "number",
+            "format": "double"
+          },
+          "culture": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "periodDisplay": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginRequestDTO": {
         "type": "object",
         "properties": {

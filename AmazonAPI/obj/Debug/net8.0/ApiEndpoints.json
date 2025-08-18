@@ -110,6 +110,30 @@
   },
   {
     "ContainingType": "AmazonAPI.Controllers.AmazonOrdersController",
+    "Method": "GetAmazonOrderStats",
+    "RelativePath": "api/AmazonOrders/AmazonOrdersstats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "period",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AmazonAPI.Models.ModelClasses.AmazonDashboardViewModel",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AmazonAPI.Controllers.AmazonOrdersController",
     "Method": "GetOrderStats",
     "RelativePath": "api/AmazonOrders/stats",
     "HttpMethod": "GET",
