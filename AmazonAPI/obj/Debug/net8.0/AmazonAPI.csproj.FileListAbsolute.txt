@@ -286,3 +286,12 @@ D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Microsoft.AspNetCore.OutputCaching.StackExchangeRedis.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\StackExchange.Redis.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Debug\net8.0\AutoMapper.dll

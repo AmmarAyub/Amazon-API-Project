@@ -212,7 +212,7 @@ namespace AmazonAPI.Controllers
 
         // PUT: api/AmazonOrders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("PutOrder")]
         public async Task<IActionResult> PutOrder(int id, Order order)
         {
             if (id != order.OrderId)
@@ -244,7 +244,7 @@ namespace AmazonAPI.Controllers
         // POST: api/AmazonOrders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        public async Task<IActionResult> PostOrder(Order order)
         {
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
