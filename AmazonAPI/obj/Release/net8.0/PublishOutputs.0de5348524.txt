@@ -4,10 +4,12 @@ D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\n
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\AmazonAPI.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\AmazonAPI.runtimeconfig.json
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\AmazonAPI.pdb
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\AutoMapper.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Humanizer.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.OutputCaching.StackExchangeRedis.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Razor.Language.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Build.dll
@@ -35,6 +37,11 @@ D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\n
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyModel.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Options.dll
@@ -69,6 +76,8 @@ D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\n
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\NuGet.ProjectModel.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\NuGet.Protocol.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\NuGet.Versioning.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Pipelines.Sockets.Unofficial.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\StackExchange.Redis.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -1,7 +1,9 @@
 ﻿using AmazonAPI.Data;
 using AmazonAPI.Models;
 using AmazonAPI.Models.ModelClasses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -19,11 +21,13 @@ namespace AmazonAPI.Controllers
     public class AmazonOrdersController : ControllerBase
     {
         private readonly AmazonDbContext _context;
+        private readonly WestendAccountsDbContext _context1;
         private readonly ILogger<AmazonOrdersController> _logger;
 
-        public AmazonOrdersController(AmazonDbContext context, ILogger<AmazonOrdersController> logger)
+        public AmazonOrdersController(AmazonDbContext context, WestendAccountsDbContext context1, ILogger<AmazonOrdersController> logger)
         {
             _context = context;
+            _context1 = context1;
             _logger = logger;
         }
 
@@ -187,6 +191,147 @@ namespace AmazonAPI.Controllers
             }
 
             return (whereClause, parameters);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("AmazonDashboard")]
+        public async Task<IActionResult> AmazonDashboard()
+        {
+         
+            var companiespayableSummary = await _context1.ViewAccountPayableByCompanies
+                .OrderByDescending(x => x.TotalBill)
+                .Take(3)
+                .ToListAsync();
+
+            var companiessummary = await _context1.ViewAccountsReceivableByCompanies
+                .Where(x => x.Name.Contains("Amazon DTS"))
+                .OrderByDescending(x => x.TotalInv)
+                .Take(3)
+                .ToListAsync();
+
+            var total = companiessummary.Sum(x => x.TotalInv);
+            var payabletotal = companiespayableSummary.Sum(x => x.TotalBill);
+
+            var amazonorderUnshipped = await _context.Set<AmazonNotShippedModel>()
+                .FromSqlRaw("EXEC AmazonOrdersUnShipped")
+                .ToListAsync();
+
+            var amazonordershipped = await _context.Set<AmazonShippedModel>()
+                .FromSqlRaw("EXEC AmazonOrdersShipped")
+                .ToListAsync();
+
+            var amazonorderstats = await _context.Set<AmazonOrdersStats>()
+                .FromSqlRaw("EXEC AmazonOrdersStats")
+                .ToListAsync();
+
+            var results = await _context1.Set<InvModel>()
+                .FromSqlRaw(@"
+            SELECT CAST(i.InvoiceDate AS date) AS Date, c.CompanyName, 
+                   FORMAT(i.InvoiceTotal, 'c') AS Total, 
+                   CASE WHEN IsPaid = 0 THEN 'Unpaid' ELSE 'Paid' END AS Status
+            FROM dbo.Invoices AS i 
+            INNER JOIN dbo.ContactCompany AS c ON c.ContactCompanyID = i.ContactID
+            WHERE (YEAR(i.InvoiceDate) = YEAR(GETDATE())) 
+                  AND (i.CompanyID IN (3, 4, 15, 23, 24, 25)) 
+                  AND (CAST(i.InvoiceDate AS date) >= CAST(GETDATE() - 45 AS date)) 
+                  AND (c.ContactCompanyID NOT IN (4239, 7860))
+        ")
+                .OrderByDescending(x => x.Date)
+                .Take(5)
+                .ToListAsync();
+
+            var invoiceslistview = results.Take(3).OrderByDescending(x => x.Total);
+
+            var response = new
+            {
+                CompaniesPayableSummary = companiespayableSummary,
+                CompaniesSummary = companiessummary,
+                Total = total,
+                PayableTotal = payabletotal,
+                AmazonOrderUnshipped = amazonorderUnshipped,
+                AmazonOrderShipped = amazonordershipped,
+                AmazonOrderStats = amazonorderstats,
+                InvoicesListView = invoiceslistview
+            };
+
+            return Ok(response);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("SaleDashboard")]
+        public async Task<IActionResult> SaleDashboard()
+        {
+            try
+            {               
+                // Get companies payable summary
+                var companiespayableSummary = await _context1.ViewAccountPayableByCompanies
+                    .OrderByDescending(x => x.TotalBill)
+                    .Take(3)
+                    .ToListAsync();
+
+                // Get companies receivable summary
+                var companiessummary = await _context1.ViewAccountsReceivableByCompanies
+                    .OrderByDescending(x => x.TotalInv)
+                    .Take(3)
+                    .ToListAsync();
+
+                //result.CompaniesSummary = companiessummary;
+                var TotalReceivable = companiessummary.Select(x => x.TotalInv).Sum();
+                var TotalPayable = companiespayableSummary.Select(x => x.TotalBill).Sum();
+
+                // Get Amazon data using stored procedures
+                var amazonOrderUnshipped = await _context.Database
+                    .SqlQueryRaw<AmazonNotShippedModel>("EXEC AmazonOrdersUnShipped")
+                    .ToListAsync();
+
+                var amazonOrderShipped = await _context.Database
+                    .SqlQueryRaw<AmazonShippedModel>("EXEC AmazonOrdersShipped")
+                    .ToListAsync();
+
+                var amazonOrderStats = await _context.Database
+                    .SqlQueryRaw<AmazonOrdersStats>("EXEC AmazonOrdersStats")
+                    .ToListAsync();
+
+                // Get invoices data
+                var invoicesQuery = @"
+                        SELECT CAST(i.InvoiceDate AS date) AS Date, 
+                               c.CompanyName, 
+                               FORMAT(i.InvoiceTotal, 'c') AS Total, 
+                               CASE WHEN IsPaid = 0 THEN 'Unpaid' ELSE 'Paid' END AS Status
+                        FROM dbo.Invoices AS i 
+                        INNER JOIN dbo.ContactCompany AS c ON c.ContactCompanyID = i.ContactID
+                        WHERE (YEAR(i.InvoiceDate) = YEAR(GETDATE())) 
+                            AND (i.CompanyID IN (3, 4, 15, 23, 24, 25)) 
+                            AND (CAST(i.InvoiceDate AS date) >= CAST(GETDATE() - 45 AS date)) 
+                            AND (c.ContactCompanyID NOT IN (4239, 7860))
+                        ";
+
+                var results = await _context1.Database
+                    .SqlQueryRaw<InvModel>(invoicesQuery)
+                    .Take(5)
+                    .ToListAsync();
+
+                var invoiceslistview = results.Take(3).OrderByDescending(x => x.Total);
+
+                var response = new
+                {
+                    CompaniesPayableSummary = companiespayableSummary,
+                    CompaniesSummary = companiessummary,
+                    Total = TotalReceivable,
+                    PayableTotal = TotalPayable,
+                    AmazonOrderUnshipped = amazonOrderUnshipped,
+                    AmazonOrderShipped = amazonOrderShipped,
+                    AmazonOrderStats = amazonOrderStats,
+                    InvoicesListView = invoiceslistview
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred in SaleDashboard");
+                return StatusCode(500, "An error occurred while processing your request");
+            }
         }
 
         // GET: api/AmazonOrders

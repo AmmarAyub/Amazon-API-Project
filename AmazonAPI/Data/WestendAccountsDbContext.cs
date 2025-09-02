@@ -382,6 +382,9 @@ public partial class WestendAccountsDbContext : DbContext
 
     public virtual DbSet<ViewUsersAndRole> ViewUsersAndRoles { get; set; }
 
+    // Add this DbSet property
+    public virtual DbSet<InvoiceModel> InvoiceModels { get; set; }
+    public virtual DbSet<InvModel> InvModels { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=DESKTOP-HPH0FS4\\SQLEXPRESS;Database=WestendAccounts;Trusted_Connection=True;TrustServerCertificate=True;");
@@ -4430,6 +4433,18 @@ public partial class WestendAccountsDbContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false);
             entity.Property(e => e.TransactionType).HasColumnName("Transaction_Type");
+        });
+
+        modelBuilder.Entity<InvoiceModel>(entity =>
+        {
+            entity.HasNoKey(); // Mark as keyless
+            entity.ToView(null); // Not mapped to a table
+        });
+
+        modelBuilder.Entity<InvModel>(entity =>
+        {
+            entity.HasNoKey(); // Mark as keyless
+            entity.ToView(null); // Not mapped to a table
         });
 
         modelBuilder.Entity<ViewUsersAndRole>(entity =>

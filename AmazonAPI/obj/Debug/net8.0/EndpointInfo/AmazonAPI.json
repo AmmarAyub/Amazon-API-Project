@@ -46,6 +46,30 @@
         }
       }
     },
+    "/api/AmazonOrders/AmazonDashboard": {
+      "get": {
+        "tags": [
+          "AmazonOrders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AmazonOrders/SaleDashboard": {
+      "get": {
+        "tags": [
+          "AmazonOrders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AmazonOrders": {
       "get": {
         "tags": [

@@ -50,6 +50,7 @@ public partial class AmazonDbContext : DbContext
 
     // Add this DbSet property
     public virtual DbSet<AmazonNotShippedModel> AmazonNotShippedModels { get; set; }
+    public virtual DbSet<AmazonShippedModel> AmazonShippedModels { get; set; }
 
     public virtual DbSet<AmazonOrdersStats> AmazonOrdersStats { get; set; }
 
@@ -546,6 +547,12 @@ public partial class AmazonDbContext : DbContext
         });
 
         modelBuilder.Entity<AmazonNotShippedModel>(entity =>
+        {
+            entity.HasNoKey(); // Mark as keyless
+            entity.ToView(null); // Not mapped to a table
+        });
+
+        modelBuilder.Entity<AmazonShippedModel>(entity =>
         {
             entity.HasNoKey(); // Mark as keyless
             entity.ToView(null); // Not mapped to a table

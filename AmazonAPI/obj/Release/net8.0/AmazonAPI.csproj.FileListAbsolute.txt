@@ -286,3 +286,12 @@ D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\n
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\AmazonAPI.pdb
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\AmazonAPI.genruntimeconfig.cache
 D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\obj\Release\net8.0\ref\AmazonAPI.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\AutoMapper.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\Microsoft.AspNetCore.OutputCaching.StackExchangeRedis.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\Pipelines.Sockets.Unofficial.dll
+D:\Westend Projects\Amazon React App\AmazonAPI\AmazonAPI\AmazonAPI\bin\Release\net8.0\StackExchange.Redis.dll
