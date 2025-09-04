@@ -215,6 +215,102 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AmazonAPI.Controllers.CustomerLedgerController",
+    "Method": "BillSelectDate",
+    "RelativePath": "api/CustomerLedger/BillSelectDate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AmazonAPI.Models.PagedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AmazonAPI.Controllers.CustomerLedgerController",
+    "Method": "InvoiceSelectDate",
+    "RelativePath": "api/CustomerLedger/InvoiceSelectDate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AmazonAPI.Models.PagedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AmazonAPI.Controllers.CustomerLedgerController",
+    "Method": "LoadCustomers",
+    "RelativePath": "api/CustomerLedger/LoadCustomers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AmazonAPI.Models.PagedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AmazonAPI.Controllers.CustomerLedgerController",
+    "Method": "LoadTransactions",
+    "RelativePath": "api/CustomerLedger/LoadTransactions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AmazonAPI.Models.PagedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AmazonAPI.Controllers.CustomerLedgerController",
+    "Method": "LoadVendors",
+    "RelativePath": "api/CustomerLedger/LoadVendors",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AmazonAPI.Models.PagedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AmazonAPI.Controllers.CustomerLedgerController",
+    "Method": "TransactionDateFilter",
+    "RelativePath": "api/CustomerLedger/TransactionDateFilter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AmazonAPI.Models.PagedRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AmazonAPI.Controllers.ManageOrdersController",
     "Method": "GetOrder",
     "RelativePath": "api/ManageOrders/orders",

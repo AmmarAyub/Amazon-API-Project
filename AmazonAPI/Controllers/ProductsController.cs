@@ -16,9 +16,9 @@ namespace AmazonAPI.Controllers
     {
         private readonly WestendAccountsDbContext _context1;
         //private readonly IMapper _mapper;
-        public ProductsController(WestendAccountsDbContext context)
+        public ProductsController(WestendAccountsDbContext context1)
         {
-            _context1 = context;
+            _context1 = context1;
 
         }
         [HttpGet("Productslist")]
