@@ -256,7 +256,7 @@ namespace AmazonAPI.Controllers
                 var allInvoices = await _context1.InvoiceModels
                     .FromSqlRaw(sqlQuery)
                     .ToListAsync();
-
+                var totalCount = allInvoices.Count();
                 // Apply date filtering if provided
                 if (request.StartDate.HasValue && request.EndDate.HasValue)
                 {
@@ -266,7 +266,7 @@ namespace AmazonAPI.Controllers
                         .ToList();
                 }
 
-                var totalCount = allInvoices.Count;
+                //var totalCount = allInvoices.Count;
                 var customers = allInvoices
                     .Skip((request.Page - 1) * request.PageSize)
                     .Take(request.PageSize)
@@ -307,7 +307,7 @@ namespace AmazonAPI.Controllers
                     FORMAT(Date_Received, 'd', 'en-us') as Date,
                     BillTotal
                 FROM View_BillPayments
-                ORDER BY Date ASC";
+                ORDER BY Date desc";
 
                 // Get all records first
                 var allBills = await _context1.BillModels

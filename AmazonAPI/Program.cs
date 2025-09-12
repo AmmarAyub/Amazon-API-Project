@@ -35,10 +35,18 @@ builder.Services.AddAuthentication(options =>
 
 // Add services to the container.
 builder.Services.AddDbContext<AmazonDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AmazonConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AmazonConnection"),
+    sqlServerOptions => sqlServerOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null)));
 
 builder.Services.AddDbContext<WestendAccountsDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("WestendAccountsConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WestendAccountsConnection"),
+    sqlServerOptions => sqlServerOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null)));
 
 // Add CORS policy
 builder.Services.AddCors(options =>
