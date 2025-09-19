@@ -54,8 +54,10 @@ namespace AmazonAPI.Controllers
         public async Task<ActionResult> GetContactCompanies()
         {
             var contactCompanies = await _context1.ContactCompanies
-                .OrderBy(x => x.CompanyName).Take(100)
-                .ToListAsync();
+                .Take(200)
+           .OrderBy(x => x.CompanyName)
+           .ToListAsync();
+
             return Ok(contactCompanies);
         }
 
@@ -112,7 +114,7 @@ namespace AmazonAPI.Controllers
         }
 
         // GET: api/partners/edit-data/{id}
-        [HttpGet("edit-data/{id}")]
+        [HttpGet("GetPartnerEditData/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -123,30 +125,42 @@ namespace AmazonAPI.Controllers
                 return BadRequest("Invalid partner ID");
             }
 
-            var partner = await _context1.Partners.FindAsync(id);
+            var partner = await _context1.Partners
+                .AsNoTracking() // Add this to prevent tracking and potential circular references
+                .FirstOrDefaultAsync(p => p.PartnerId == id);
+
             if (partner == null)
             {
                 return NotFound($"Partner with ID {id} not found");
             }
 
-            var contactCompanies = await _context1.ContactCompanies
-                .OrderBy(x => x.CompanyName)
+            var contactCompanies= await _context1.ContactCompanies.Where(x=>x.Status==4).Take(200)
+                .OrderByDescending(x => x.CompanyName)
+                 .AsNoTracking()
                 .ToListAsync();
+
+            partner.ContactCompany = await _context1.ContactCompanies
+                .Where(x => x.ContactCompanyId == partner.ContactCompanyId)
+                .FirstOrDefaultAsync();
 
             var contacts = await _context1.PartnerContacts
                 .Where(x => x.PartnerId == id)
+                .AsNoTracking() // Add this to prevent tracking and potential circular references
                 .ToListAsync();
 
             var trainings = await _context1.PartnerTrainings
                 .Where(x => x.PartnerId == id)
+                .AsNoTracking() // Add this to prevent tracking and potential circular references
                 .ToListAsync();
 
             var opportunities = await _context1.PartnerOpportunities
                 .Where(x => x.PartnerId == id)
+                .AsNoTracking() // Add this to prevent tracking and potential circular references
                 .ToListAsync();
 
             var logins = await _context1.PartnerLogins
                 .Where(x => x.PartnerId == id)
+                .AsNoTracking() // Add this to prevent tracking and potential circular references
                 .ToListAsync();
 
             var editData = new PartnerEditDataDto
@@ -166,70 +180,70 @@ namespace AmazonAPI.Controllers
             return Ok(editData);
         }
 
-        // PUT: api/partners/{id}
-        [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdatePartner(int id, [FromBody] PartnerUpdateDto partnerDto)
-        {
-            if (id != partnerDto.PartnerID)
-            {
-                return BadRequest("ID mismatch");
-            }
+        //// PUT: api/partners/{id}
+        //[HttpPut("UpdatePartner{id}")]
+        //[ProducesResponseType(StatusCodes.Status204NoContent)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //public async Task<IActionResult> UpdatePartner(int id, [FromBody] PartnerUpdateDto partnerDto)
+        //{
+        //    if (id != partnerDto.PartnerID)
+        //    {
+        //        return BadRequest("ID mismatch");
+        //    }
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var partner = await _context1.Partners.FindAsync(id);
-            if (partner == null)
-            {
-                return NotFound();
-            }
+        //    var partner = await _context1.Partners.FindAsync(id);
+        //    if (partner == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            // Update properties
-            partner.PartnerShipType = partnerDto.PartnerShipType;
-            partner.Name = partnerDto.Name;
-            partner.Email = partnerDto.Email;
-            partner.Phone = partnerDto.Phone;
-            partner.Title = partnerDto.Title;
-            partner.Address = partnerDto.Address;
-            partner.City = partnerDto.City;
-            partner.State = partnerDto.State;
-            partner.PostalCode = partnerDto.PostalCode;
-            partner.Country = partnerDto.Country;
-            partner.Website = partnerDto.Website;
-            partner.Industry = partnerDto.Industry;
-            partner.ContactCompanyId = partnerDto.ContactCompanyID;
-            partner.Renewal = partnerDto.Renewal;
-            partner.MinDealValue = partnerDto.MinDealValue;
-            partner.RegistrationDate = partnerDto.RegistrationDate;
-            partner.Notes = partnerDto.Notes;
-            partner.ChangedBy = partnerDto.ChangedBy;
-            partner.ChangeDate = partnerDto.ChangeDate;
+        //    // Update properties
+        //    partner.PartnerShipType = partnerDto.PartnerShipType;
+        //    partner.Name = partnerDto.Name;
+        //    partner.Email = partnerDto.Email;
+        //    partner.Phone = partnerDto.Phone;
+        //    partner.Title = partnerDto.Title;
+        //    partner.Address = partnerDto.Address;
+        //    partner.City = partnerDto.City;
+        //    partner.State = partnerDto.State;
+        //    partner.PostalCode = partnerDto.PostalCode;
+        //    partner.Country = partnerDto.Country;
+        //    partner.Website = partnerDto.Website;
+        //    partner.Industry = partnerDto.Industry;
+        //    partner.ContactCompanyId = partnerDto.ContactCompanyID;
+        //    partner.Renewal = partnerDto.Renewal;
+        //    partner.MinDealValue = partnerDto.MinDealValue;
+        //    partner.RegistrationDate = partnerDto.RegistrationDate;
+        //    partner.Notes = partnerDto.Notes;
+        //    partner.ChangedBy = partnerDto.ChangedBy;
+        //    partner.ChangeDate = partnerDto.ChangeDate;
 
-            _context1.Entry(partner).State = EntityState.Modified;
+        //    _context1.Entry(partner).State = EntityState.Modified;
 
-            try
-            {
-                await _context1.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PartnerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context1.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PartnerExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // GET: api/partners/contact-details/{id}
         [HttpGet("contact-details/{id}")]
@@ -248,10 +262,10 @@ namespace AmazonAPI.Controllers
             return Ok(contact);
         }
 
-        private bool PartnerExists(int id)
-        {
-            return _context1.Partners.Any(e => e.PartnerId == id);
-        }
+        //private bool PartnerExists(int id)
+        //{
+        //    return _context1.Partners.Any(e => e.PartnerId == id);
+        //}
 
         // GET: api/partners/training-details/{id}
         [HttpGet("training-details/{id}")]
@@ -302,7 +316,7 @@ namespace AmazonAPI.Controllers
         }
 
         // PUT: api/partners/partner/{id}
-        [HttpPut("partner/{id}")]
+        [HttpPut("EditPartner/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -310,6 +324,12 @@ namespace AmazonAPI.Controllers
         {
             try
             {
+                // Check if partnerDetails is null (this handles the "required" error)
+                if (partnerDetails == null)
+                {
+                    return BadRequest(new ApiResponse { Success = false, Message = "Partner details are required" });
+                }
+
                 if (id != partnerDetails.PartnerID)
                 {
                     return BadRequest(new ApiResponse { Success = false, Message = "ID mismatch" });
@@ -321,26 +341,26 @@ namespace AmazonAPI.Controllers
                     return NotFound(new ApiResponse { Success = false, Message = "Partner not found" });
                 }
 
-                // Update properties
-                partner.Name = partnerDetails.Name;
-                partner.PartnerShipType = partnerDetails.PartnerShipType;
-                partner.Address = partnerDetails.Address;
-                partner.Phone = partnerDetails.Phone;
-                partner.Title = partnerDetails.Title;
-                partner.ContactCompanyId = partnerDetails.ContactCompanyID;
-                partner.City = partnerDetails.City;
-                partner.State = partnerDetails.State;
-                partner.Country = partnerDetails.Country;
-                partner.PostalCode = partnerDetails.PostalCode;
-                partner.Email = partnerDetails.Email;
-                partner.Renewal = partnerDetails.Renewal;
-                partner.RegistrationDate = partnerDetails.RegistrationDate;
-                partner.Website = partnerDetails.Website;
-                partner.Industry = partnerDetails.Industry;
-                partner.MinDealValue = partnerDetails.MinDealValue;
-                partner.Notes = partnerDetails.Notes;
+                // Update properties - use null-coalescing to handle null values appropriately
+                partner.Name = partnerDetails.Name ?? partner.Name;
+                partner.PartnerShipType = partnerDetails.PartnerShipType ?? partner.PartnerShipType;
+                partner.Address = partnerDetails.Address ?? partner.Address;
+                partner.Phone = partnerDetails.Phone ?? partner.Phone;
+                partner.Title = partnerDetails.Title ?? partner.Title;
+                partner.ContactCompanyId = partnerDetails.ContactCompanyID ?? partner.ContactCompanyId;
+                partner.City = partnerDetails.City ?? partner.City;
+                partner.State = partnerDetails.State ?? partner.State;
+                partner.Country = partnerDetails.Country ?? partner.Country;
+                partner.PostalCode = partnerDetails.PostalCode ?? partner.PostalCode;
+                partner.Email = partnerDetails.Email ?? partner.Email;
+                partner.Renewal = partnerDetails.Renewal ?? partner.Renewal;
+                partner.RegistrationDate = partnerDetails.RegistrationDate ?? partner.RegistrationDate;
+                partner.Website = partnerDetails.Website ?? partner.Website;
+                partner.Industry = partnerDetails.Industry ?? partner.Industry;
+                partner.MinDealValue = partnerDetails.MinDealValue ?? partner.MinDealValue;
+                partner.Notes = partnerDetails.Notes ?? partner.Notes;
                 partner.ChangeDate = DateTime.Now;
-                partner.ChangedBy = partnerDetails.ChangedBy;
+                partner.ChangedBy = partnerDetails.ChangedBy ?? partner.ChangedBy;
 
                 _context1.Entry(partner).State = EntityState.Modified;
                 await _context1.SaveChangesAsync();

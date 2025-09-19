@@ -633,7 +633,7 @@
         }
       }
     },
-    "/api/PartnerManagement/edit-data/{id}": {
+    "/api/PartnerManagement/GetPartnerEditData/{id}": {
       "get": {
         "tags": [
           "PartnerManagement"
@@ -652,88 +652,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/PartnerManagement/{id}": {
-      "put": {
-        "tags": [
-          "PartnerManagement"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerUpdateDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerUpdateDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerUpdateDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
           },
           "400": {
             "description": "Bad Request",
@@ -890,7 +808,7 @@
         }
       }
     },
-    "/api/PartnerManagement/partner/{id}": {
+    "/api/PartnerManagement/EditPartner/{id}": {
       "put": {
         "tags": [
           "PartnerManagement"
@@ -6407,7 +6325,8 @@
             "nullable": true
           },
           "renewal": {
-            "type": "boolean"
+            "type": "boolean",
+            "nullable": true
           },
           "minDealValue": {
             "type": "number",
@@ -6416,7 +6335,8 @@
           },
           "registrationDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "notes": {
             "type": "string",

@@ -73,9 +73,9 @@ namespace AmazonAPI.Models.DTO_s
 
         public string Industry { get; set; }
         public int? ContactCompanyID { get; set; }
-        public bool Renewal { get; set; }
+        public bool? Renewal { get; set; }
         public decimal? MinDealValue { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public DateTime? RegistrationDate { get; set; }
         public string Notes { get; set; }
         public string ChangedBy { get; set; }
         public DateTime ChangeDate { get; set; }
