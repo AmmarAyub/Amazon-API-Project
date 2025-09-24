@@ -380,7 +380,7 @@ namespace AmazonAPI.Controllers
         }
 
         // PUT: api/partners/contact/{id}
-        [HttpPut("contact/{id}")]
+        [HttpPut("EditContact/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -430,15 +430,15 @@ namespace AmazonAPI.Controllers
         }
 
         // PUT: api/partners/training/{id}
-        [HttpPut("training/{id}")]
+        [HttpPut("EditTraining/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ApiResponse>> EditTraining(int id, [FromBody] PartnerTraining trainingDetails)
+        public async Task<ActionResult<ApiResponse>> EditTraining(int id, [FromBody] PartnerTrainingModel trainingDetails)
         {
             try
             {
-                if (id != trainingDetails.TrainingId)
+                if (id != trainingDetails.TrainingID)
                 {
                     return BadRequest(new ApiResponse { Success = false, Message = "ID mismatch" });
                 }
@@ -450,7 +450,7 @@ namespace AmazonAPI.Controllers
                 }
 
                 // Update properties
-                training.PartnerId = trainingDetails.PartnerId;
+                training.PartnerId = trainingDetails.PartnerID;
                 training.TrainingName = trainingDetails.TrainingName;
                 training.TrainingType = trainingDetails.TrainingType;
                 training.CompletionDate = trainingDetails.CompletionDate;
@@ -475,15 +475,15 @@ namespace AmazonAPI.Controllers
         }
 
         // PUT: api/partners/opportunity/{id}
-        [HttpPut("opportunity/{id}")]
+        [HttpPut("EditOpportunity/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ApiResponse>> EditOpportunity(int id, [FromBody] PartnerOpportunity opportunityDetails)
+        public async Task<ActionResult<ApiResponse>> EditOpportunity(int id, [FromBody] PartnerOpportunityModel opportunityDetails)
         {
             try
             {
-                if (id != opportunityDetails.OpportunityId)
+                if (id != opportunityDetails.OpportunityID)
                 {
                     return BadRequest(new ApiResponse { Success = false, Message = "ID mismatch" });
                 }
@@ -495,19 +495,19 @@ namespace AmazonAPI.Controllers
                 }
 
                 // Update properties
-                opportunity.PartnerId = opportunityDetails.PartnerId;
+                opportunity.PartnerId = opportunityDetails.PartnerID;
                 opportunity.OpportunityName = opportunityDetails.OpportunityName;
                 opportunity.OpportunityType = opportunityDetails.OpportunityType;
                 opportunity.ProductName = opportunityDetails.ProductName;
                 opportunity.SerialNumber = opportunityDetails.SerialNumber;
-                opportunity.FortiCareId = opportunityDetails.FortiCareId;
-                opportunity.CoTermQuoteId = opportunityDetails.CoTermQuoteId;
-                opportunity.TradeUpId = opportunityDetails.TradeUpId;
-                opportunity.IsSdwanopportunity = opportunityDetails.IsSdwanopportunity;
+                opportunity.FortiCareId = opportunityDetails.FortiCareID;
+                opportunity.CoTermQuoteId = opportunityDetails.CoTermQuoteID;
+                opportunity.TradeUpId = opportunityDetails.TradeUpID;
+                opportunity.IsSdwanopportunity = opportunityDetails.IsSDWANOpportunity;
                 opportunity.IsOperationalTechnologyOpportunity = opportunityDetails.IsOperationalTechnologyOpportunity;
                 opportunity.EstimatedValue = opportunityDetails.EstimatedValue;
-                opportunity.StatusId = opportunityDetails.StatusId;
-                opportunity.DealRegOot = opportunityDetails.DealRegOot;
+                opportunity.StatusId = opportunityDetails.StatusID;
+                opportunity.DealRegOot = opportunityDetails.DealRegOOT;
                 opportunity.IsRenewalOver9999 = opportunityDetails.IsRenewalOver9999;
                 opportunity.FedDeal = opportunityDetails.FedDeal;
                 opportunity.TradeIn = opportunityDetails.TradeIn;
@@ -536,15 +536,15 @@ namespace AmazonAPI.Controllers
         }
 
         // PUT: api/partners/login/{id}
-        [HttpPut("login/{id}")]
+        [HttpPut("EditLogin/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ApiResponse>> EditLogin(int id, [FromBody] PartnerLogin loginDetails)
+        public async Task<ActionResult<ApiResponse>> EditLogin(int id, [FromBody] PartnerLoginModel loginDetails)
         {
             try
             {
-                if (id != loginDetails.LoginId)
+                if (id != loginDetails.LoginID)
                 {
                     return BadRequest(new ApiResponse { Success = false, Message = "ID mismatch" });
                 }
@@ -556,10 +556,10 @@ namespace AmazonAPI.Controllers
                 }
 
                 // Update properties
-                login.PartnerId = loginDetails.PartnerId;
+                login.PartnerId = loginDetails.PartnerID;
                 login.Username = loginDetails.Username;
                 login.Password = loginDetails.Password;
-                login.LoginUrl = loginDetails.LoginUrl;
+                login.LoginUrl = loginDetails.LoginURL;
 
                 _context1.Entry(login).State = EntityState.Modified;
                 await _context1.SaveChangesAsync();
@@ -579,10 +579,10 @@ namespace AmazonAPI.Controllers
         }
 
         // POST: api/partners/contact
-        [HttpPost("contact")]
+        [HttpPost("CreateContact")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> CreateContact([FromBody] PartnerContact contactDetails)
+        public async Task<ActionResult<ApiResponse>> CreateContact([FromBody] PartnerContactModel contactDetails)
         {
             try
             {
@@ -593,7 +593,7 @@ namespace AmazonAPI.Controllers
 
                 var partnerContact = new PartnerContact
                 {
-                    PartnerId = contactDetails.PartnerId,
+                    PartnerId = contactDetails.PartnerID,
                     ContactName = contactDetails.ContactName,
                     AddressLine1 = contactDetails.AddressLine1,
                     Phone = contactDetails.Phone,
@@ -614,16 +614,16 @@ namespace AmazonAPI.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error creating contact for partner {PartnerId}", contactDetails.PartnerId);
+                _logger.LogError(ex, "Error creating contact for partner {PartnerId}", contactDetails.PartnerID);
                 return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while creating the contact" });
             }
         }
 
         // POST: api/partners/training
-        [HttpPost("training")]
+        [HttpPost("CreateTraining")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> CreateTraining([FromBody] PartnerTraining trainingDetails)
+        public async Task<ActionResult<ApiResponse>> CreateTraining([FromBody] PartnerTrainingModel trainingDetails)
         {
             try
             {
@@ -634,7 +634,7 @@ namespace AmazonAPI.Controllers
 
                 var partnerTraining = new PartnerTraining
                 {
-                    PartnerId = trainingDetails.PartnerId,
+                    PartnerId = trainingDetails.PartnerID,
                     TrainingName = trainingDetails.TrainingName,
                     TrainingType = trainingDetails.TrainingType,
                     CompletionDate = trainingDetails.CompletionDate,
@@ -650,16 +650,16 @@ namespace AmazonAPI.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error creating training for partner {PartnerId}", trainingDetails.PartnerId);
+                _logger.LogError(ex, "Error creating training for partner {PartnerId}", trainingDetails.PartnerID);
                 return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while creating the training" });
             }
         }
 
         // POST: api/partners/opportunity
-        [HttpPost("opportunity")]
+        [HttpPost("CreateOpportunity")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> CreateOpportunity([FromBody] PartnerOpportunity opportunityDetails)
+        public async Task<ActionResult<ApiResponse>> CreateOpportunity([FromBody] PartnerOpportunityModel opportunityDetails)
         {
             try
             {
@@ -670,19 +670,19 @@ namespace AmazonAPI.Controllers
 
                 var partnerOpportunity = new PartnerOpportunity
                 {
-                    PartnerId = opportunityDetails.PartnerId,
+                    PartnerId = opportunityDetails.PartnerID,
                     OpportunityName = opportunityDetails.OpportunityName,
                     OpportunityType = opportunityDetails.OpportunityType,
                     ProductName = opportunityDetails.ProductName,
                     SerialNumber = opportunityDetails.SerialNumber,
-                    FortiCareId = opportunityDetails.FortiCareId,
-                    CoTermQuoteId = opportunityDetails.CoTermQuoteId,
-                    TradeUpId = opportunityDetails.TradeUpId,
-                    IsSdwanopportunity = opportunityDetails.IsSdwanopportunity,
+                    FortiCareId = opportunityDetails.FortiCareID,
+                    CoTermQuoteId = opportunityDetails.CoTermQuoteID,
+                    TradeUpId = opportunityDetails.TradeUpID,
+                    IsSdwanopportunity = opportunityDetails.IsSDWANOpportunity,
                     IsOperationalTechnologyOpportunity = opportunityDetails.IsOperationalTechnologyOpportunity,
                     EstimatedValue = opportunityDetails.EstimatedValue,
-                    StatusId = opportunityDetails.StatusId,
-                    DealRegOot = opportunityDetails.DealRegOot,
+                    StatusId = opportunityDetails.StatusID,
+                    DealRegOot = opportunityDetails.DealRegOOT,
                     IsRenewalOver9999 = opportunityDetails.IsRenewalOver9999,
                     FedDeal = opportunityDetails.FedDeal,
                     TradeIn = opportunityDetails.TradeIn,
@@ -702,16 +702,16 @@ namespace AmazonAPI.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error creating opportunity for partner {PartnerId}", opportunityDetails.PartnerId);
+                _logger.LogError(ex, "Error creating opportunity for partner {PartnerId}", opportunityDetails.PartnerID);
                 return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while creating the opportunity" });
             }
         }
 
         // POST: api/partners/login
-        [HttpPost("login")]
+        [HttpPost("CreateLogin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> CreateLogin([FromBody] PartnerLogin loginDetails)
+        public async Task<ActionResult<ApiResponse>> CreateLogin([FromBody] PartnerLoginModel loginDetails)
         {
             try
             {
@@ -725,10 +725,10 @@ namespace AmazonAPI.Controllers
 
                 var partnerLogin = new PartnerLogin
                 {
-                    PartnerId = loginDetails.PartnerId,
+                    PartnerId = loginDetails.PartnerID,
                     Username = loginDetails.Username,
                     Password = encryptedPassword,
-                    LoginUrl = loginDetails.LoginUrl
+                    LoginUrl = loginDetails.LoginURL
                 };
 
                 _context1.PartnerLogins.Add(partnerLogin);
@@ -739,7 +739,7 @@ namespace AmazonAPI.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error creating login for partner {PartnerId}", loginDetails.PartnerId);
+                _logger.LogError(ex, "Error creating login for partner {PartnerId}", loginDetails.PartnerID);
                 return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while creating the login" });
             }
         }
@@ -756,7 +756,7 @@ namespace AmazonAPI.Controllers
         }
 
         // GET: api/trainings
-        [HttpGet("trainings")]
+        [HttpGet("GetTrainings")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<PartnerTrainingDto>>> GetTrainings()
         {
@@ -813,7 +813,7 @@ namespace AmazonAPI.Controllers
         }
 
         // GET: api/trainings/{id}
-        [HttpGet("trainings/{id}")]
+        [HttpGet("GetTraining/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<PartnerTrainingDto>> GetTraining(int id)
@@ -847,135 +847,6 @@ namespace AmazonAPI.Controllers
             {
                 _logger.LogError(ex, "Error retrieving training {TrainingId}", id);
                 return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while retrieving the training" });
-            }
-        }
-
-        // POST: api/trainings
-        [HttpPost("trainings")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ApiResponse>> CreateTraining([FromBody] PartnerTrainingCreateDto trainingDto)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(new ApiResponse { Success = false, Message = "Invalid model state", Errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)) });
-                }
-
-                // Verify partner exists
-                var partner = await _context1.Partners.FindAsync(trainingDto.PartnerID);
-                if (partner == null)
-                {
-                    return BadRequest(new ApiResponse { Success = false, Message = "Partner not found" });
-                }
-
-                var training = new PartnerTraining
-                {
-                    PartnerId = trainingDto.PartnerID,
-                    TrainingName = trainingDto.TrainingName,
-                    TrainingType = trainingDto.TrainingType,
-                    CompletionDate = trainingDto.CompletionDate,
-                    CertIssuedTo = trainingDto.CertIssuedTo,
-                    CertificateUploaded = trainingDto.CertificateUploaded
-                };
-
-                _context1.PartnerTrainings.Add(training);
-                await _context1.SaveChangesAsync();
-
-                return CreatedAtAction(nameof(GetTraining), new { id = training.TrainingId },
-                    new ApiResponse { Success = true, Id = training.TrainingId, Message = "Training created successfully" });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error creating training");
-                return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while creating the training" });
-            }
-        }
-
-        // PUT: api/trainings/{id}
-        [HttpPut("trainings/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ApiResponse>> UpdateTraining(int id, [FromBody] PartnerTrainingUpdateDto trainingDto)
-        {
-            try
-            {
-                if (id != trainingDto.TrainingID)
-                {
-                    return BadRequest(new ApiResponse { Success = false, Message = "ID mismatch" });
-                }
-
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(new ApiResponse { Success = false, Message = "Invalid model state", Errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)) });
-                }
-
-                var training = await _context1.PartnerTrainings.FindAsync(id);
-                if (training == null)
-                {
-                    return NotFound(new ApiResponse { Success = false, Message = "Training not found" });
-                }
-
-                // Verify partner exists if changing partner
-                if (training.PartnerId != trainingDto.PartnerID)
-                {
-                    var partner = await _context1.Partners.FindAsync(trainingDto.PartnerID);
-                    if (partner == null)
-                    {
-                        return BadRequest(new ApiResponse { Success = false, Message = "Partner not found" });
-                    }
-                }
-
-                // Update properties
-                training.PartnerId = trainingDto.PartnerID;
-                training.TrainingName = trainingDto.TrainingName;
-                training.TrainingType = trainingDto.TrainingType;
-                training.CompletionDate = trainingDto.CompletionDate;
-                training.CertIssuedTo = trainingDto.CertIssuedTo;
-                training.CertificateUploaded = trainingDto.CertificateUploaded;
-
-                _context1.Entry(training).State = EntityState.Modified;
-                await _context1.SaveChangesAsync();
-
-                return Ok(new ApiResponse { Success = true, Id = training.TrainingId, Message = "Training updated successfully" });
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                _logger.LogWarning(ex, "Concurrency conflict occurred while updating training {TrainingId}", id);
-                return Conflict(new ApiResponse { Success = false, Message = "Concurrency conflict occurred" });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error updating training {TrainingId}", id);
-                return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while updating the training" });
-            }
-        }
-
-        // DELETE: api/trainings/{id}
-        [HttpDelete("trainings/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ApiResponse>> DeleteTraining(int id)
-        {
-            try
-            {
-                var training = await _context1.PartnerTrainings.FindAsync(id);
-                if (training == null)
-                {
-                    return NotFound(new ApiResponse { Success = false, Message = "Training not found" });
-                }
-
-                _context1.PartnerTrainings.Remove(training);
-                await _context1.SaveChangesAsync();
-
-                return Ok(new ApiResponse { Success = true, Message = "Training deleted successfully" });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error deleting training {TrainingId}", id);
-                return StatusCode(500, new ApiResponse { Success = false, Message = "An error occurred while deleting the training" });
             }
         }
     }

@@ -135,7 +135,7 @@ namespace AmazonAPI.Models.DTO_s
         public int PartnerID { get; set; }
         public string TrainingName { get; set; }
         public string TrainingType { get; set; }
-        public DateTime? CompletionDate { get; set; } // Changed from DateOnly to DateTime
+        public DateOnly? CompletionDate { get; set; } // Changed from DateOnly to DateTime
         public bool? CertIssuedTo { get; set; }
         public bool CertificateUploaded { get; set; }
     }

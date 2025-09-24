@@ -907,7 +907,7 @@
         }
       }
     },
-    "/api/PartnerManagement/contact/{id}": {
+    "/api/PartnerManagement/EditContact/{id}": {
       "put": {
         "tags": [
           "PartnerManagement"
@@ -1006,7 +1006,7 @@
         }
       }
     },
-    "/api/PartnerManagement/training/{id}": {
+    "/api/PartnerManagement/EditTraining/{id}": {
       "put": {
         "tags": [
           "PartnerManagement"
@@ -1026,17 +1026,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerTraining"
+                "$ref": "#/components/schemas/PartnerTrainingModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerTraining"
+                "$ref": "#/components/schemas/PartnerTrainingModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerTraining"
+                "$ref": "#/components/schemas/PartnerTrainingModel"
               }
             }
           }
@@ -1105,7 +1105,7 @@
         }
       }
     },
-    "/api/PartnerManagement/opportunity/{id}": {
+    "/api/PartnerManagement/EditOpportunity/{id}": {
       "put": {
         "tags": [
           "PartnerManagement"
@@ -1125,17 +1125,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerOpportunity"
+                "$ref": "#/components/schemas/PartnerOpportunityModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerOpportunity"
+                "$ref": "#/components/schemas/PartnerOpportunityModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerOpportunity"
+                "$ref": "#/components/schemas/PartnerOpportunityModel"
               }
             }
           }
@@ -1204,7 +1204,7 @@
         }
       }
     },
-    "/api/PartnerManagement/login/{id}": {
+    "/api/PartnerManagement/EditLogin/{id}": {
       "put": {
         "tags": [
           "PartnerManagement"
@@ -1224,17 +1224,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerLogin"
+                "$ref": "#/components/schemas/PartnerLoginModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerLogin"
+                "$ref": "#/components/schemas/PartnerLoginModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerLogin"
+                "$ref": "#/components/schemas/PartnerLoginModel"
               }
             }
           }
@@ -1303,7 +1303,7 @@
         }
       }
     },
-    "/api/PartnerManagement/contact": {
+    "/api/PartnerManagement/CreateContact": {
       "post": {
         "tags": [
           "PartnerManagement"
@@ -1312,17 +1312,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerContact"
+                "$ref": "#/components/schemas/PartnerContactModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerContact"
+                "$ref": "#/components/schemas/PartnerContactModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerContact"
+                "$ref": "#/components/schemas/PartnerContactModel"
               }
             }
           }
@@ -1371,7 +1371,7 @@
         }
       }
     },
-    "/api/PartnerManagement/training": {
+    "/api/PartnerManagement/CreateTraining": {
       "post": {
         "tags": [
           "PartnerManagement"
@@ -1380,17 +1380,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerTraining"
+                "$ref": "#/components/schemas/PartnerTrainingModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerTraining"
+                "$ref": "#/components/schemas/PartnerTrainingModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerTraining"
+                "$ref": "#/components/schemas/PartnerTrainingModel"
               }
             }
           }
@@ -1439,7 +1439,7 @@
         }
       }
     },
-    "/api/PartnerManagement/opportunity": {
+    "/api/PartnerManagement/CreateOpportunity": {
       "post": {
         "tags": [
           "PartnerManagement"
@@ -1448,17 +1448,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerOpportunity"
+                "$ref": "#/components/schemas/PartnerOpportunityModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerOpportunity"
+                "$ref": "#/components/schemas/PartnerOpportunityModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerOpportunity"
+                "$ref": "#/components/schemas/PartnerOpportunityModel"
               }
             }
           }
@@ -1507,7 +1507,7 @@
         }
       }
     },
-    "/api/PartnerManagement/login": {
+    "/api/PartnerManagement/CreateLogin": {
       "post": {
         "tags": [
           "PartnerManagement"
@@ -1516,17 +1516,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerLogin"
+                "$ref": "#/components/schemas/PartnerLoginModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerLogin"
+                "$ref": "#/components/schemas/PartnerLoginModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerLogin"
+                "$ref": "#/components/schemas/PartnerLoginModel"
               }
             }
           }
@@ -1575,7 +1575,7 @@
         }
       }
     },
-    "/api/PartnerManagement/trainings": {
+    "/api/PartnerManagement/GetTrainings": {
       "get": {
         "tags": [
           "PartnerManagement"
@@ -1606,72 +1606,6 @@
                   "items": {
                     "$ref": "#/components/schemas/PartnerTrainingDto"
                   }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "PartnerManagement"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerTrainingCreateDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerTrainingCreateDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerTrainingCreateDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -1717,7 +1651,7 @@
         }
       }
     },
-    "/api/PartnerManagement/trainings/{id}": {
+    "/api/PartnerManagement/GetTraining/{id}": {
       "get": {
         "tags": [
           "PartnerManagement"
@@ -1750,161 +1684,6 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PartnerTrainingDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "PartnerManagement"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerTrainingUpdateDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerTrainingUpdateDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PartnerTrainingUpdateDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "PartnerManagement"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponse"
                 }
               }
             }
@@ -5713,6 +5492,60 @@
         },
         "additionalProperties": false
       },
+      "PartnerContactModel": {
+        "type": "object",
+        "properties": {
+          "contactID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "partnerID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressLine1": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PartnerCreateDto": {
         "required": [
           "name",
@@ -5891,6 +5724,32 @@
         },
         "additionalProperties": false
       },
+      "PartnerLoginModel": {
+        "type": "object",
+        "properties": {
+          "loginID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "partnerID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "loginURL": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PartnerOpportunity": {
         "type": "object",
         "properties": {
@@ -6050,6 +5909,91 @@
         },
         "additionalProperties": false
       },
+      "PartnerOpportunityModel": {
+        "type": "object",
+        "properties": {
+          "opportunityID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "partnerID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "opportunityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "opportunityType": {
+            "type": "string",
+            "nullable": true
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "serialNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "fortiCareID": {
+            "type": "string",
+            "nullable": true
+          },
+          "coTermQuoteID": {
+            "type": "string",
+            "nullable": true
+          },
+          "tradeUpID": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSDWANOpportunity": {
+            "type": "boolean"
+          },
+          "isOperationalTechnologyOpportunity": {
+            "type": "string",
+            "nullable": true
+          },
+          "estimatedValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "statusID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dealRegOOT": {
+            "type": "boolean"
+          },
+          "isRenewalOver9999": {
+            "type": "boolean"
+          },
+          "fedDeal": {
+            "type": "boolean"
+          },
+          "tradeIn": {
+            "type": "boolean"
+          },
+          "dealType": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "changedBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PartnerOpportunityStatus": {
         "type": "object",
         "properties": {
@@ -6134,43 +6078,6 @@
         },
         "additionalProperties": false
       },
-      "PartnerTrainingCreateDto": {
-        "required": [
-          "partnerID",
-          "trainingName"
-        ],
-        "type": "object",
-        "properties": {
-          "partnerID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "trainingName": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
-          },
-          "trainingType": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "completionDate": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "certIssuedTo": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "certificateUploaded": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
       "PartnerTrainingDto": {
         "required": [
           "trainingName"
@@ -6217,11 +6124,7 @@
         },
         "additionalProperties": false
       },
-      "PartnerTrainingUpdateDto": {
-        "required": [
-          "partnerID",
-          "trainingName"
-        ],
+      "PartnerTrainingModel": {
         "type": "object",
         "properties": {
           "trainingID": {
@@ -6233,13 +6136,10 @@
             "format": "int32"
           },
           "trainingName": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "trainingType": {
-            "maxLength": 50,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
