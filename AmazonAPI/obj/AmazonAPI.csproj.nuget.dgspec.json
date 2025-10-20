@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Westend Projects\\Amazon React App\\AmazonAPI\\AmazonAPI\\AmazonAPI\\AmazonAPI.csproj": {}
+    "D:\\Westend Projects\\Amazon-API-Project\\Amazon-API-Project\\AmazonAPI\\AmazonAPI.csproj": {}
   },
   "projects": {
-    "D:\\Westend Projects\\Amazon React App\\AmazonAPI\\AmazonAPI\\AmazonAPI\\AmazonAPI.csproj": {
+    "D:\\Westend Projects\\Amazon-API-Project\\Amazon-API-Project\\AmazonAPI\\AmazonAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Westend Projects\\Amazon React App\\AmazonAPI\\AmazonAPI\\AmazonAPI\\AmazonAPI.csproj",
+        "projectUniqueName": "D:\\Westend Projects\\Amazon-API-Project\\Amazon-API-Project\\AmazonAPI\\AmazonAPI.csproj",
         "projectName": "AmazonAPI",
-        "projectPath": "D:\\Westend Projects\\Amazon React App\\AmazonAPI\\AmazonAPI\\AmazonAPI\\AmazonAPI.csproj",
-        "packagesPath": "C:\\Users\\Ammar\\.nuget\\packages\\",
-        "outputPath": "D:\\Westend Projects\\Amazon React App\\AmazonAPI\\AmazonAPI\\AmazonAPI\\obj\\",
+        "projectPath": "D:\\Westend Projects\\Amazon-API-Project\\Amazon-API-Project\\AmazonAPI\\AmazonAPI.csproj",
+        "packagesPath": "C:\\Users\\Neflogix\\.nuget\\packages\\",
+        "outputPath": "D:\\Westend Projects\\Amazon-API-Project\\Amazon-API-Project\\AmazonAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ammar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Neflogix\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -62,6 +62,10 @@
             "Microsoft.AspNetCore.OutputCaching.StackExchangeRedis": {
               "target": "Package",
               "version": "[8.0.19, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[6.1.2, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -109,7 +113,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

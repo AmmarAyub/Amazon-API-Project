@@ -44,7 +44,6 @@ namespace AmazonAPI.Controllers
                         UserStatus = user.UserStatus
                     })
                     .ToListAsync();
-
                 return Ok(users);
             }
             catch (Exception ex)
