@@ -1829,6 +1829,18 @@
         }
       }
     },
+    "/api/Task/TaskResponsibilities": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [

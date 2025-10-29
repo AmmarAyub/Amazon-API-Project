@@ -598,3 +598,4 @@ D:\Westend Projects\Amazon-API-Project\Amazon-API-Project\AmazonAPI\bin\Debug\ne
 D:\Westend Projects\Amazon-API-Project\Amazon-API-Project\AmazonAPI\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
 D:\Westend Projects\Amazon-API-Project\Amazon-API-Project\AmazonAPI\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 D:\Westend Projects\Amazon-API-Project\Amazon-API-Project\AmazonAPI\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Westend Projects\Amazon-API-Project\Amazon-API-Project\AmazonAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

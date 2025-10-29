@@ -1040,6 +1040,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AmazonAPI.Controllers.TaskController",
+    "Method": "GetTaskResponsibilities",
+    "RelativePath": "api/Task/TaskResponsibilities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AmazonAPI.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

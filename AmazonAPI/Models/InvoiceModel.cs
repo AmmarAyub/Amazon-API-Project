@@ -132,8 +132,22 @@
     // Models/PagedRequest.cs
     public class PagedRequest
     {
-        public int Page { get; set; } = 1;
-        public int PageSize { get; set; } = 20;
+        private int _page = 1;
+        private int _pageSize = 20;
+
+        public int Page
+        {
+            get => _page;
+            set => _page = value < 1 ? 1 : value;
+        }
+
+        public int PageSize
+        {
+            get => _pageSize;
+            set => _pageSize = value < 1 ? 20 : value > 100 ? 100 : value;
+        }
+        //public int Page { get; set; } = 1;
+        //public int PageSize { get; set; } = 20;
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
     }
